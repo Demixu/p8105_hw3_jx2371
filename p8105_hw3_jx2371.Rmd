@@ -1,0 +1,17 @@
+---
+title: "p8105_hw3_jx2371"
+author: "Jingyu Xu"
+date: "2018/10/13"
+output: github_document
+---
+
+---
+title: "P8105_hw3_jx2371"
+author: "Jingyu Xu"
+date: "2018/10/13"
+output: github_document
+---
+Firstly，I set a globle option which hides the message and warning information.
+```{r setup}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```
