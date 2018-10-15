@@ -121,13 +121,29 @@ instacart%>%
   nrow()
 
 #select the aisles the most items ordered from
-instacart%>%
+number_item=instacart%>%
   group_by(aisle)%>%
   summarize(order_total=n())%>%
   arrange(-order_total)
+
+number_item
 ```
 
 comment:
 From the result of the code chunck, we can see the total number of aisles is 134 and the aisle that most items orderd from is fresh vegetables.
+
+2. Draw a plot that shows the number of items in each aisle.
+```{r fig.height=20}
+number_item%>%
+ggplot(aes(x = order_total, y=aisle)) + 
+  geom_bar(stat="identity")+
+  labs(
+    title = "the number of items in each aisle",
+    x = "the total number of item",
+    y = "aisle name",
+    caption = "Data from the instacart package"
+  )+
+  theme(axis.text.x = element_text(face="bold",size=10, angle = 90))
+```
 
 
