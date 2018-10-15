@@ -132,6 +132,7 @@ number_item
 comment:
 From the result of the code chunck, we can see the total number of aisles is 134 and the aisle that most items orderd from is fresh vegetables.
 
+
 2. Draw a plot that shows the number of items in each aisle.
 ```{r fig.height=20}
 number_item%>%
@@ -147,3 +148,14 @@ ggplot(aes(x = order_total, y=aisle)) +
 ```
 
 
+3.make a table showing the most popular item in each of the aisles"baking ingredients", "dog food care", "packaged vegetables fruits"
+```{r}
+filter(instacart, aisle=="baking ingredients"|aisle=="dog food care"|aisle=="packaged vegetables fruits")%>%
+  group_by(aisle,product_name)%>%
+  summarize(n=n())%>%
+  group_by(aisle)%>%
+  filter(n==max(n))%>%
+    knitr::kable()
+```
+
+Comment:Now, we have got the table of the most populer items in the aisles selected.Light brown sugar is the most popular item in the aisle"baking ingredients", and Snack Sticks Chicken & Rice Recipe Dog Treats is the most popular item in the aisle"dog food care". As for the most popular item in packaged vegetables fruits, it is Organic Baby Spinach.
