@@ -200,3 +200,12 @@ NY_NOAA=NY_NOAA%>%
   janitor::clean_names()%>%
   separate(date, into = c("year", "month", "day"), sep = "-")
 ```
+
+most commonly oberved values
+```{r}
+NY_NOAA%>%
+  group_by(snow)%>%
+  summarize(n=n())%>%
+  arrange(-n)
+```
+The most commonly observed values of snowfall is 0. Because the snow season is shorter than half year actually.
