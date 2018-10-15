@@ -97,7 +97,7 @@ brfss%>%
   ) + 
   facet_grid(.~response)+
   theme(legend.position = "bottom")+
-  theme(axis.text.x = element_text(size=10, angle = 90))
+  theme(axis.text.x = element_text(face="bold",size=10, angle = 90))
 ```
 We can observe from the boxplots that the average proportion ordered from highest to the lowest from an overall average trend aspect is:poor response, fair response, excellent response, very good response and good response. And there are some outliers in all of the response section.
 
@@ -112,5 +112,22 @@ The size of dataset is （`r dim(instacart)`). The variables includes "`r names(
 str(instacart)
 ```
 
+##answers to some questions
+1.number of aisles and select the aisles the most items ordered from.
+```{r}
+#caculate the number of aisles
+instacart%>%
+  distinct(aisle_id)%>%
+  nrow()
+
+#select the aisles the most items ordered from
+instacart%>%
+  group_by(aisle)%>%
+  summarize(order_total=n())%>%
+  arrange(-order_total)
+```
+
+comment:
+From the result of the code chunck, we can see the total number of aisles is 134 and the aisle that most items orderd from is fresh vegetables.
 
 
